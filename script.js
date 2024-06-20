@@ -1,21 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const taskInput = document.getElementById('taskInput');
-    const addTaskBtn = document.getElementById('addTaskBtn');
-    const taskList = document.getElementById('taskList');
+document.addEventListener('DOMContentLoaded', () => {
+    const addButton = document.querySelector('button');
+    const inputField = document.getElementById('taskInput');
+    const taskList = document.getElementById('tasks');
 
-    addTaskBtn.addEventListener('click', function() {
-        const taskText = taskInput.value.trim();
-        if (taskText !== '') {
-            const li = document.createElement('li');
-            li.textContent = taskText;
-            taskList.appendChild(li);
-            taskInput.value = '';
+    addButton.addEventListener('click', function() {
+        const taskText = inputField.value.trim();
+
+        if (taskText) {
+            const newTask = document.createElement('li');
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    newTask.classList.add('completed');
+                } else {
+                    newTask.classList.remove('completed');
+                }
+            });
+
+            const taskLabel = document.createElement('span');
+            taskLabel.textContent = taskText;
+
+            newTask.appendChild(checkbox);
+            newTask.appendChild(taskLabel);
+            taskList.appendChild(newTask);
+
+            inputField.value = ''; // Clear the input after adding a task
         }
     });
 
-    taskList.addEventListener('click', function(event) {
-        if (event.target.tagName === 'LI') {
-            event.target.classList.toggle('completed');
+    inputField.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addButton.click();
         }
     });
 });
