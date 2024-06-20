@@ -1,25 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const addButton = document.querySelector('button');
-    const inputField = document.getElementById('taskInput');
-    const taskList = document.getElementById('tasks');
+document.addEventListener('DOMContentLoaded', function() {
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const taskList = document.getElementById('taskList');
 
-    addButton.addEventListener('click', function() {
-        const taskText = inputField.value.trim();
-
-        if (taskText) {
-            const newTask = document.createElement('li');
-            newTask.textContent = taskText;
-            newTask.addEventListener('click', function() {
-                this.classList.toggle('completed');
-            });
-            taskList.appendChild(newTask);
-            inputField.value = ''; // Clear the input after adding a task
+    addTaskBtn.addEventListener('click', function() {
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+            const li = document.createElement('li');
+            li.textContent = taskText;
+            taskList.appendChild(li);
+            taskInput.value = '';
         }
     });
 
-    inputField.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            addButton.click();
+    taskList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'LI') {
+            event.target.classList.toggle('completed');
         }
     });
 });
