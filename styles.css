@@ -1,75 +1,49 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
+body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-header {
-    background-color: #7c7cff;
-    color: white;
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
     padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
     text-align: center;
 }
 
-main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.task-input {
-    margin-bottom: 20px;
-}
-
 input[type="text"] {
+    width: 70%;
     padding: 10px;
-    width: 300px;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 button {
     padding: 10px 20px;
-    cursor: pointer;
-    background-color: #7c7cff;
-    color: white;
+    background-color: #4CAF50;
+    color: #fff;
     border: none;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #5656ff;
+    background-color: #45a049;
 }
 
-.task-list ul {
+ul {
     list-style-type: none;
+    padding: 0;
 }
 
-.task-list li {
-    background-color: #f0f0f0;
+li {
     padding: 10px;
-    margin-top: 10px;
-    width: 350px;
+    border-bottom: 1px solid #ddd;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #7c7cff;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-}
-
-
-.task-list li.completed {
-    text-decoration: line-through;
-    color: grey;
+li:last-child {
+    border-bottom: none;
 }
